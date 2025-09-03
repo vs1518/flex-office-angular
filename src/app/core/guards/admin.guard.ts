@@ -2,12 +2,10 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthStore } from '../../features/auth/services/auth.store';
 
-export const authGuard: CanActivateFn = (route, state) => {
+export const adminGuard: CanActivateFn = () => {
   const auth = inject(AuthStore);
   const router = inject(Router);
-
-  if (auth.isLoggedIn()) return true;
-
-  router.navigate(['/auth/login'], { queryParams: { returnUrl: state.url } });
+  if (auth.isAdmin()) return true;
+  router.navigate(['/todos']);
   return false;
 };
