@@ -3,16 +3,16 @@ import { authGuard } from './core/guards/auth.guard';
 import { adminGuard } from './core/guards/admin.guard';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'todos' },
+  { path: '', pathMatch: 'full', redirectTo: 'reservations' },
 
   {
     path: 'auth',
     loadChildren: () => import('./features/auth/auth.route').then(m => m.AUTH_ROUTES),
   },
   {
-    path: 'todos',
+    path: 'reservations',
     canActivate: [authGuard],
-    loadChildren: () => import('./features/todos/todos.routes').then(m => m.TODOS_ROUTES),
+    loadChildren: () => import('./features/reservations/reservations.routes').then(m => m.RESERVATIONS_ROUTES),
   },
   {
     path: 'admin',
@@ -20,5 +20,5 @@ export const routes: Routes = [
     loadChildren: () => import('./features/admin/admin.routes').then(m => m.ADMIN_ROUTES),
   },
 
-  { path: '**', redirectTo: 'todos' },
+  { path: '**', redirectTo: 'reservations' },
 ];
