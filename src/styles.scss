@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Design tokens (extraits de ton globals.css) */
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.205 0 0);
+  --card: oklch(0.97 0 0);
+  --card-foreground: oklch(0.205 0 0);
+  --accent: oklch(0.646 0.222 285.75);
+  --accent-foreground: oklch(1 0 0);
+  --border: oklch(0.922 0 0);
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --accent: oklch(0.646 0.222 285.75);
+  --accent-foreground: oklch(1 0 0);
+  --border: oklch(0.269 0 0);
+}
+
+@layer base {
+  * { @apply border-[color:var(--border)] outline-[#0000]; }
+  body { @apply bg-[color:var(--background)] text-[color:var(--foreground)]; }
+}
